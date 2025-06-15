@@ -1,0 +1,10 @@
+
+
+
+RewriteEngine On
+RewriteBase /
+# Не перенаправлять существующие файлы и директории
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php [L,QSA]
+ErrorDocument 404 /404.php
