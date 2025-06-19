@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['add_product'])) {
         $title = trim($_POST['title']);
         $description = trim($_POST['description']);
         $price = (float)$_POST['price'];
-        $discount = isset($_POST['discount']) ? (float)$_POST['discount'] : 0;
+        $discount = isset($_POST['discount']) ? $_POST['discount'] : 0;
         $is_hit = isset($_POST['is_hit']) ? 1 : 0;
         // Валидация данных
         if (empty($title) || empty($description)) {
@@ -109,14 +109,13 @@ $comments = $conn->query("SELECT * FROM comments ORDER BY date_added DESC");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Админ-панель - Ребенок-Рад</title>
-    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"  crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">  -->
+
 </head>
 <body>
     <div class="admin-container">
         <div class="admin-header">
             <h1 class="admin-title">Админ-панель</h1>
-            <a href="/index.php" class="back-btn">
+            <a href="/" class="back-btn">
                 <i class="fas fa-arrow-left"></i> На сайт
             </a>
         </div>
@@ -185,7 +184,7 @@ $comments = $conn->query("SELECT * FROM comments ORDER BY date_added DESC");
                                 <td><?= htmlspecialchars($product['title']) ?></td>
                                 <td><?= nl2br(htmlspecialchars($product['description'])) ?></td>
                                 <td><?= number_format($product['price'], 0, '', ' ') ?> ₽</td>
-                                <td><?= $product['discount'],0 ?>%</td>
+                                <td><?= $product['discount'] ?>%</td>
                                 <td><?= $product['is_hit'] ? 'Да' : 'Нет' ?></td>
                                 <td>
                                     <form method="POST" onsubmit="return confirm('Удалить этот товар?');">
