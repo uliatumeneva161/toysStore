@@ -39,7 +39,7 @@ $request_uri = rtrim($request_uri, '/') ?: '/';
 
 // Разрешенные страницы (без .php в URI)
 $allowed_routes = [
-    '/index' => true,        // Главная
+    '/' => true,        // Главная
     '/admin' => true,   // Админка
     // Другие маршруты
 ];
@@ -68,6 +68,10 @@ if ($request_uri === '/index.php') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO-метатеги -->
+    <meta name="description" content="Магазин детских товаров Ребенок-Рад: коляски, игрушки, товары для новорожденных. Лучшие акции для детей и родителей!">
+    <meta name="keywords" content="детские товары, коляски, игрушки, акции для детей, товары для новорожденных, детская одежда">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Ребенок-Рад - магазин детских товаров</title>
 </head>
@@ -83,13 +87,18 @@ if ($request_uri === '/index.php') {
                 <h1>Ребенок-Рад</h1>
                 <p class="tagline">Все для счастливого детства</p>
             </div>
-            <nav class="navigation">
-                <a href="#home" class="nav-link">Главная</a>      
-                <a href="#catalog" class="nav-link">Каталог</a>
-                <a href="#promotions" class="nav-link">Акции</a>
-                <a href="#contacts" class="nav-link">Контакты</a>
-            </nav>
-            <a href="/admin">Admin</a>
+             <div class="burger-menu" id="burgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+             <nav class="navigation" id="navMenu">
+            <a href="#home" class="nav-link">Главная</a>      
+            <a href="#catalog" class="nav-link">Каталог</a>
+            <a href="#promotions" class="nav-link">Акции</a>
+            <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+            
         </div>
     </header>
     <main>
@@ -145,21 +154,7 @@ if ($request_uri === '/index.php') {
                 ?>
             </div>
         </section>
-        <section id="promotions" class="promotions">
-            <h2>Акции и скидки</h2>
-            <div class="promotion-item">
-                <div class="promotion-image">
-                    <img src="./img/1.jpg" alt="Скидка на коляски">
-                    <img src="./img/k2.jpg" alt="Скидка на коляски">
-                    <img src="./img/k3.jpg" alt="Скидка на коляски">
-                </div>
-                <div class="promotion-content">
-                    <h3>Скидка 20% на все коляски!</h3>
-                    <p>При покупке любой модели коляски вы получаете скидку 20%. Не упустите шанс подарить своему ребенку комфорт и безопасность!</p>
-                </div>
-            </div>
-        </section>
-        <section id="contacts" class="contacts">
+                <section id="contacts" class="contacts">
             <h2>Контакты</h2>
             <div class="contact-info">
                 <p> +7 (123) 456-78-90</p>
@@ -220,7 +215,8 @@ if ($request_uri === '/index.php') {
             <svg class="star-icon" viewBox="0 0 24 24">
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
             </svg>
-        </label>
+            </label>
+               
     </div>
 </div>
 
@@ -270,15 +266,67 @@ if ($request_uri === '/index.php') {
     $conn->close();
     ?>
 </div>
+ </section>
+        <section class="promotions-section" id="promotions">
+        <div class="section-header">
+            <h2>Специальные акции на коляски</h2>
+            <p>Воспользуйтесь нашими выгодными предложениями на лучшие модели колясок</p>
+        </div>
+
+        <div class="promo-cards">
+            <!-- Карточка 1 -->
+            <div class="promo-card">
+                <img src="./img/k1.jpg" alt="Коляска трансформер" class="card-image">
+                <div class="card-content">
+                    <span class="tag">Хит продаж</span>
+                    <h4>Коляска-трансформер 3 в 1</h4>
+                    <p>Универсальное решение от рождения до 3 лет. В комплекте люлька, прогулочный блок и автокресло.</p>
+                    <div class="price">
+                        <span class="old-price">24 990 ₽</span>
+                        <span class="new-price">19 990 ₽</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 2 -->
+            <div class="promo-card">
+                <img src="./img/k2.jpg" alt="Зимняя коляска" class="card-image">
+                <div class="card-content">
+                    <span class="tag">Спецпредложение</span>
+                    <h4>Зимний комплект для коляски</h4>
+                    <p>Теплый конверт, муфта для рук и зимние колеса. Создайте комфорт для малыша в холодное время года.</p>
+                    <div class="price">
+                        <span class="old-price">8 500 ₽</span>
+                        <span class="new-price">5 990 ₽</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Карточка 3 -->
+            <div class="promo-card">
+                <img src="./img/k1.jpg" alt="Коляска-трость" class="card-image">
+                <div class="card-content">
+                    <span class="tag">Акция</span>
+                    <h4>Складная коляска-трость</h4>
+                    <p>Ультракомпактная модель для путешествий. Вес всего 5.8 кг. Специальная цена на новую коллекцию.</p>
+                    <div class="price">
+                        <span class="old-price">12 700 ₽</span>
+                        <span class="new-price">9 900 ₽</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
 
     </main>
     <footer>
         <p>© 2025 Ребенок-Рад. Все права защищены.</p>
     </footer>
-    <script src="https://kit.fontawesome.com/a076d05399.js"   crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"   crossorigin="anonymous"></script> -->
     <script>
         // Плавный скролл к якорным ссылкам
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
@@ -286,6 +334,41 @@ if ($request_uri === '/index.php') {
                 });
             });
         });
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.getElementById('burgerMenu');
+    const navMenu = document.getElementById('navMenu');
+    
+    // Переключение меню по клику на бургер
+    burgerMenu.addEventListener('click', function(e) {
+        e.stopPropagation(); // Предотвращаем срабатывание document.click
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // Закрытие меню по клику на ссылку
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            burgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Закрытие меню при клике вне области
+    document.addEventListener('click', function(e) {
+        if (!navMenu.contains(e.target) && 
+            !burgerMenu.contains(e.target) &&
+            navMenu.classList.contains('active')) {
+            
+            burgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+    
+    // Предотвращаем закрытие при клике внутри меню
+    navMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });  
+});
+</script>
 </body>
 </html>

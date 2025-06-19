@@ -22,7 +22,7 @@
         <div class="error-code">404</div>
         <div class="error-message">Страница не найдена</div>
         <p>Извините, но запрашиваемая вами страница не существует.</p>
-        <a href="/index.php" class="cta-button">Вернуться на главную</a>
+        <a href="/" class="cta-button">Вернуться на главную</a>
     </div>
 </body>
 </html>

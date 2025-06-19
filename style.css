@@ -218,7 +218,239 @@ main {
     color: var(--text);
     margin-bottom: 1rem;
 }
+ /* Новый стиль для блока акций */
+        .promotions {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
 
+        .promotions h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .promotions h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .promotion-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .promotion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .promotion-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .promotion-image-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .promotion-image {
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .promotion-image-container:hover .promotion-image {
+            transform: scale(1.05);
+        }
+
+        .promotion-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(255, 155, 179, 0.3);
+            z-index: 2;
+        }
+
+        .promotion-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promotion-content h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .promotion-card:hover .promotion-content h3 {
+            color: #e76f8c;
+        }
+
+        .promotion-content p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .promotion-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .promotion-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--text);
+        }
+
+        .promotion-price s {
+            color: #999;
+            margin-right: 8px;
+            font-size: 1rem;
+        }
+
+        .promotion-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(139, 211, 221, 0.3);
+        }
+
+        .promotion-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(139, 211, 221, 0.5);
+            background: linear-gradient(135deg, #ff8aa8, #7dcad5);
+        }
+
+        .promotion-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .promotion-countdown {
+            background: var(--accent);
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .countdown-label {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            font-weight: bold;
+        }
+
+        .countdown-unit {
+            background: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            min-width: 28px;
+        }
+
+        .promotion-header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .promotion-header p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .promotions h2 {
+                font-size: 2.2rem;
+            }
+            
+            .promotions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promotion-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
 .products {
     display: grid;
     grid-template-columns: repeat(3, 300px);
@@ -226,6 +458,385 @@ main {
     justify-content: center;
     padding: 1rem;
 }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Акции на коляски</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF9BB3;
+            --secondary: #8BD3DD;
+            --accent: #FEF6E4;
+            --text: #001858;
+            --background: #F9F9F9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            color: var(--text);
+            background-color: var(--background);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .background-circles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+
+        .circle-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            top: -200px;
+            left: -200px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--secondary), #F3D2C1);
+            bottom: -100px;
+            right: -100px;
+            animation: rotate 25s linear infinite reverse;
+        }
+
+        .circle-3 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #F3D2C1, var(--primary));
+            top: 50%;
+            right: 20%;
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        header {
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Стили для секции акций */
+        .promotions-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Слайдер */
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            height: 500px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 24, 88, 0.7), rgba(0, 24, 88, 0.3));
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-content {
+            max-width: 50%;
+            padding: 0 5%;
+            color: white;
+        }
+
+        .slide-content .tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .slide-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Навигация слайдера */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .slider-nav:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-nav.prev {
+            left: 20px;
+        }
+
+        .slider-nav.next {
+            right: 20px;
+        }
+
+        .slider-nav i {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        /* Акционные карточки */
+        .promo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .promo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content .tag {
+            background-color: var(--secondary);
+            color: var(--text);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .card-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .card-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 0.9rem;
+        }
+
+        .price .new-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .card-content .btn {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+       
+
+
+    
+       
 
 @media (max-width: 1020px) {
     .products {
@@ -344,7 +955,9 @@ main {
 }
 
 .comments-section {
-    margin-top: 2rem;
+    margin-left: 10%;
+    max-width: 80%;
+    margin-top: 3rem;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     border-radius: 10px;
@@ -353,7 +966,9 @@ main {
 }
 
 .comment-form {
+
     margin-bottom: 2rem;
+    
 }
 
 footer {
@@ -734,5 +1349,69 @@ footer p {
     .data-table img {
         max-width: 80px;
         max-height: 80px;
+    }
+}
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--text);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Адаптивное меню */
+/* Адаптивное меню */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    
+    .navigation {
+        position: fixed;
+        top: 142px;
+        right: -100%; /* Начальное положение - за пределами экрана справа */
+        bottom: 0;
+        height: 100vh;
+        width: 70%;
+        background-color: #f9f9f9;
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        transition: right 0.5s ease; /* Анимируем только свойство right */
+        z-index: 1000;
+    }
+    
+    .navigation.active {
+        right: -10%; /* При активном состоянии - показываем меню */
+    }
+    
+    .nav-link {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        display: block;
+    }
+    
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
     }
 }
